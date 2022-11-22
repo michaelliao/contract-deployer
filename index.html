@@ -16,6 +16,13 @@
     <script src="https://cdn.jsdelivr.net/npm/ethers@5.0.32/dist/ethers.umd.min.js"></script>
 
     <style>
+        .x-border {
+            border: 1px solid #ced4da;
+            border-left: 0.25rem solid #5bc0de;
+            border-radius: 0.25rem;
+            padding: 1rem;
+        }
+
         .bg-gray:hover {
             background-color: #eee;
         }
@@ -42,6 +49,13 @@
             '80001': ['Ploygon Testnet', 'https://mumbai.polygonscan.com'],
             '128': ['Heco', 'https://hecoinfo.com']
         };
+
+        $(function () {
+            for (let chainId in window.CHAINS) {
+                let chain = window.CHAINS[chainId];
+                $('#chainList').append('<a target="_blank" href="' + chain[1] + '" class="me-4">' + chain[0] + ' <i class="bi bi-box-arrow-up-right"></i></a>');
+            }
+        });
 
         function splitHex(hexString) {
             if (hexString.startsWith('0x')) {
@@ -650,9 +664,17 @@
         <div style="padding-top: 70px;">
             <div class="row">
                 <div class="col">
-                    <h3>Contract Deploy</h3>
-                    <p>This tool helps deploy a contract on multiple EVM-compatible chains with same address.</p>
-                    <hr />
+                    <div class="x-border">
+                        <h5>Contract Deploy</h5>
+                        <p>This is an online tool for deploying EVM-compatible contracts on multiple chains with same
+                            address. Supported chains:</p>
+                        <p id="chainList"></p>
+                        <p>Please read the <a target="_blank"
+                                href="https://github.com/michaelliao/contract-deployer/blob/master/doc.md">document
+                                <i class="bi bi-box-arrow-up-right"></i></a>
+                            to learn how to deploy contract.</p>
+                        <p>Make sure you have tested on testnet before deploy to the mainnet.</p>
+                    </div>
                 </div>
             </div>
             <div class="row">
