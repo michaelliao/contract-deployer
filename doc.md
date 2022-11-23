@@ -2,7 +2,7 @@
 
 This online service helps deploy EVM-compatible contract on multiple chains with same address.
 
-The deploy factory contract was already deployed on multiple chains with same address [0xEa5837...383B59](https://etherscan.io/address/0xEa5837e1F89e3cf23027dA7866e6492458383B59).
+The deploy factory contract was already deployed on multiple chains with same address [0xEa58...3B59](https://etherscan.io/address/0xEa5837e1F89e3cf23027dA7866e6492458383B59).
 
 The deploy factory contract uses [CREATE2](https://docs.openzeppelin.com/cli/2.8/deploying-with-create2) opcode to deplopy a specific contract by pre-caculated address.
 
@@ -10,7 +10,7 @@ The deploy factory contract uses [CREATE2](https://docs.openzeppelin.com/cli/2.8
 
 ### Get Contract Bytecode
 
-Compile your contracts in [Remix](http://remix.ethereum.org) or other tools. Here is an example of [CafeToken](CafeToken.sol).
+Compile your contracts in [Remix](http://remix.ethereum.org) or other tools. Here is an example of [CafeToken](sample/CafeToken.sol).
 
 A metadata file `CafeToken.json` can be found in Remix - File explorer - contracts - artifacts:
 
@@ -65,6 +65,8 @@ You can use the salt downloaded from the previous step for deployment without lo
 
 ![salt](img/salt.png)
 
+Check the [sample deployment](sample/deploy-0xCafeB0563f4f3CbC29ef0A0B48Fdc927597D58D4.txt) which was deployed at [0xCafe...58D4](https://etherscan.io/address/0xCafeB0563f4f3CbC29ef0A0B48Fdc927597D58D4) on Ethereum, Polygon and BSC.
+
 # Important Nodes
 
 Note the execution of the constructor of the deployed contract: the `msg.sender` is not the operator but the deploy-factory-contract address which is `0xEa5837...383B59`. Here is an example which logic is not correct:
@@ -73,7 +75,7 @@ Note the execution of the constructor of the deployed contract: the `msg.sender`
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract LostControlContract is Ownable {
-    // owner is always set to 0xEa5837...383B59:
+    // owner is always set to 0xEa58...3B59:
     constructor() {
     }
 }
