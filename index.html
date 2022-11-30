@@ -291,6 +291,20 @@
                     removeArg: function (index) {
                         this.args.splice(index, 1);
                     },
+                    hex2decimal: function (str) {
+                        str = str.trim();
+                        if (str.startsWith('0x')) {
+                            str = str.substring(2);
+                        }
+                        try {
+                            let n = parseInt(str, 16);
+                            if (!isNaN(n)) {
+                                return '0x' + n.toString(16) + ' = ' + n + ' (decimal)';
+                            }
+                        } catch (e) {
+                            return '';
+                        }
+                    },
                     isArgSizeListDisabled: function (arg) {
                         return arg.type !== 'uint' && arg.type !== 'bytes';
                     },
@@ -474,7 +488,7 @@
                                 };
                                 await tx.wait(1);
                             };
-                            let loading = showLoading('Deploy Contract', 'Please sign the transaction in MetaMask...');
+                            let loading = showLoading('Deploy Contract', 'Please sign the transaction in MetaMask and wait for blockchain confirmation...');
                             fn().then(() => {
                                 loading.close();
                                 showInfo('Deployed', 'Contract ' + expectedAddress + ' was deployed successfully!');
@@ -728,12 +742,14 @@
                         </div>
                         <div v-for="(arg, index) in args" class="p-3 rounded bg-gray">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
                                     <label for="salt" class="form-label">Argument <span v-text="index+1"></span>:
                                     </label>
                                 </div>
-                                <div class="col-6 text-end">
-                                    <a v-on:click="removeArg(index)" href="#0" class="text-end">Remove</a>
+                                <div class="col-6 col-sm-7 col-md-8 col-lg-9 col-xl-9 col-xxl-10">
+                                    <label v-if="arg.type==='uint'" v-text="hex2decimal(arg.value)"
+                                        class="form-label"></label>
+                                    <a v-on:click="removeArg(index)" href="#0" class="d-block float-end">Remove</a>
                                 </div>
                             </div>
                             <div class="row">
