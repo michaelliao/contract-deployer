@@ -67,7 +67,7 @@ You can use the salt downloaded from the previous step for deployment without lo
 
 Check the [sample deployment](sample/deploy-0xCafeB0563f4f3CbC29ef0A0B48Fdc927597D58D4.txt) which was deployed at [0xCafe...58D4](https://blockscan.com/address/0xCafeB0563f4f3CbC29ef0A0B48Fdc927597D58D4) on Ethereum, Polygon and BSC.
 
-# Important Nodes
+# Important Notes
 
 Note the execution of the constructor of the deployed contract: the `msg.sender` is not the operator but the deploy-factory-contract address which is `0xEa5837...383B59`. Here is an example which logic is not correct:
 
