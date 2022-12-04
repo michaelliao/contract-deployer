@@ -51,12 +51,19 @@
         window.CONTRACT_ABI = '[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"creatorAddress","type":"address"},{"indexed":false,"internalType":"address","name":"contractAddress","type":"address"}],"name":"ContractDeployed","type":"event"},{"inputs":[{"internalType":"bytes32","name":"salt","type":"bytes32"},{"internalType":"bytes","name":"contractBytecode","type":"bytes"}],"name":"deployContract","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"salt","type":"bytes32"},{"internalType":"bytes","name":"contractBytecode","type":"bytes"},{"internalType":"bytes","name":"constructorArgsEncoded","type":"bytes"}],"name":"deployContractWithConstructor","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"fee","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_fee","type":"uint256"}],"name":"setFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"}],"name":"setOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address payable","name":"_to","type":"address"}],"name":"withdrawFee","outputs":[],"stateMutability":"nonpayable","type":"function"}]';
         window.CHAINS = {
             '1': ['Ethereum', 'https://etherscan.io'],
-            '5': ['Goerli Testnet', 'https://goerli.etherscan.io'],
             '56': ['BSC', 'https://bscscan.com'],
-            '97': ['BSC Testnet', 'https://testnet.bscscan.com'],
             '137': ['Polygon', 'https://polygonscan.com'],
+            '250': ['Fantom', 'https://ftmscan.com'],
+            '43114': ['Avalanche', 'https://snowtrace.io'],
+            '42161': ['Arbitrum', 'https://arbiscan.io'],
+            '128': ['Heco', 'https://hecoinfo.com'],
+            // testnet:
+            '5': ['Goerli Testnet', 'https://goerli.etherscan.io'],
+            '97': ['BSC Testnet', 'https://testnet.bscscan.com'],
             '80001': ['Ploygon Testnet', 'https://mumbai.polygonscan.com'],
-            '128': ['Heco', 'https://hecoinfo.com']
+            '4002': ['Fantom Testnet', 'https://testnet.ftmscan.com'],
+            '43113': ['Avalanche Testnet', 'https://testnet.snowtrace.io'],
+            '421613': ['Arbitrum Goerli Testnet', 'https://goerli.arbiscan.io']
         };
 
         $(function () {
