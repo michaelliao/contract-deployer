@@ -50,26 +50,32 @@
         window.CONTRACT_ADDR = '0xEa5837e1F89e3cf23027dA7866e6492458383B59';
         window.CONTRACT_ABI = '[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"creatorAddress","type":"address"},{"indexed":false,"internalType":"address","name":"contractAddress","type":"address"}],"name":"ContractDeployed","type":"event"},{"inputs":[{"internalType":"bytes32","name":"salt","type":"bytes32"},{"internalType":"bytes","name":"contractBytecode","type":"bytes"}],"name":"deployContract","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"salt","type":"bytes32"},{"internalType":"bytes","name":"contractBytecode","type":"bytes"},{"internalType":"bytes","name":"constructorArgsEncoded","type":"bytes"}],"name":"deployContractWithConstructor","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"fee","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_fee","type":"uint256"}],"name":"setFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"}],"name":"setOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address payable","name":"_to","type":"address"}],"name":"withdrawFee","outputs":[],"stateMutability":"nonpayable","type":"function"}]';
         window.CHAINS = {
-            '1': ['Ethereum', 'https://etherscan.io'],
-            '56': ['BSC', 'https://bscscan.com'],
-            '137': ['Polygon', 'https://polygonscan.com'],
-            '250': ['Fantom', 'https://ftmscan.com'],
-            '43114': ['Avalanche', 'https://snowtrace.io'],
-            '42161': ['Arbitrum', 'https://arbiscan.io'],
-            '128': ['Heco', 'https://hecoinfo.com'],
+            // chainId: ['name', 'https://scanurl', 'sortBy']
+            '1': ['Ethereum', 'https://etherscan.io', 10],
+            '56': ['BSC', 'https://bscscan.com', 20],
+            '137': ['Polygon', 'https://polygonscan.com', 30],
+            '250': ['Fantom', 'https://ftmscan.com', 40],
+            '43114': ['Avalanche', 'https://snowtrace.io', 50],
+            '42161': ['Arbitrum', 'https://arbiscan.io', 60],
+            '128': ['Heco', 'https://hecoinfo.com', 70],
             // testnet:
-            '5': ['Goerli Testnet', 'https://goerli.etherscan.io'],
-            '97': ['BSC Testnet', 'https://testnet.bscscan.com'],
-            '80001': ['Ploygon Testnet', 'https://mumbai.polygonscan.com'],
-            '4002': ['Fantom Testnet', 'https://testnet.ftmscan.com'],
-            '43113': ['Avalanche Testnet', 'https://testnet.snowtrace.io'],
-            '421613': ['Arbitrum Goerli Testnet', 'https://goerli.arbiscan.io']
+            '5': ['Goerli Testnet', 'https://goerli.etherscan.io', 10010],
+            '97': ['BSC Testnet', 'https://testnet.bscscan.com', 10020],
+            '80001': ['Ploygon Testnet', 'https://mumbai.polygonscan.com', 10030],
+            '4002': ['Fantom Testnet', 'https://testnet.ftmscan.com', 10040],
+            '43113': ['Avalanche Testnet', 'https://testnet.snowtrace.io', 10050],
+            '421613': ['Arbitrum Goerli Testnet', 'https://goerli.arbiscan.io', 10060]
         };
 
         $(function () {
+            let chains = [];
             for (let chainId in window.CHAINS) {
-                let chain = window.CHAINS[chainId];
-                $('#chainList').append('<a target="_blank" href="' + chain[1] + '" class="me-4">' + chain[0] + ' <i class="bi bi-box-arrow-up-right"></i></a>');
+                chains.push(window.CHAINS[chainId]);
+            }
+            chains.sort((c1, c2) => c1[2] - c2[2]);
+            for (let i = 0; i < chains.length; i++) {
+                let chain = chains[i];
+                $('#chainList').append('<a target="_blank" href="' + chain[1] + '/address/' + window.CONTRACT_ADDR + '" class="me-4">' + chain[0] + ' <i class="bi bi-box-arrow-up-right"></i></a>');
             }
         });
 
