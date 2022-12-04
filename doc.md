@@ -2,7 +2,7 @@
 
 This online service helps deploy EVM-compatible contract on multiple chains with same address.
 
-The deploy factory contract was already deployed on multiple chains with same address [0xEa58...3B59](https://etherscan.io/address/0xEa5837e1F89e3cf23027dA7866e6492458383B59).
+The deploy factory contract was already deployed on multiple chains with same address [0xEa58...3B59](https://blockscan.com/address/0xEa5837e1F89e3cf23027dA7866e6492458383B59).
 
 The deploy factory contract uses [CREATE2](https://docs.openzeppelin.com/cli/2.8/deploying-with-create2) opcode to deplopy a specific contract by pre-caculated address.
 
