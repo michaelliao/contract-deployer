@@ -8,6 +8,8 @@ Generate contract address by Java 17 program.
 java -jar contract-address-generator.jar path/to/bytecode.txt
 ```
 
+Download [contract-address-generator.jar](contract-address-generator.jar).
+
 The text file contains bytecode as:
 
 ```
