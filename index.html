@@ -47,6 +47,7 @@
     </script>
 
     <script>
+        window.BYTECODE_MAX_SIZE = 24 * 1024;
         window.CONTRACT_ADDR = '0xEa5837e1F89e3cf23027dA7866e6492458383B59';
         window.CONTRACT_ABI = '[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"creatorAddress","type":"address"},{"indexed":false,"internalType":"address","name":"contractAddress","type":"address"}],"name":"ContractDeployed","type":"event"},{"inputs":[{"internalType":"bytes32","name":"salt","type":"bytes32"},{"internalType":"bytes","name":"contractBytecode","type":"bytes"}],"name":"deployContract","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"salt","type":"bytes32"},{"internalType":"bytes","name":"contractBytecode","type":"bytes"},{"internalType":"bytes","name":"constructorArgsEncoded","type":"bytes"}],"name":"deployContractWithConstructor","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"fee","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_fee","type":"uint256"}],"name":"setFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"}],"name":"setOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address payable","name":"_to","type":"address"}],"name":"withdrawFee","outputs":[],"stateMutability":"nonpayable","type":"function"}]';
         window.CHAINS = {
@@ -377,7 +378,7 @@
                             }
                             let
                                 i, arg, argTypes = [], argType, argValue, argValues = [], abiEncoder, hexArgs = '0x',
-                                hexContractBytecode = formatHexString(this.contractBytecode, true, 100, 49152),
+                                hexContractBytecode = formatHexString(this.contractBytecode, true, 100, window.BYTECODE_MAX_SIZE * 2),
                                 boolCalculatePrefix = this.calculatePrefix === 'true',
                                 hexContractPrefix = formatHexString(this.contractPrefix, false, 1, 10),
                                 hexSalt = formatHexString(this.salt, false, 1, 64),
