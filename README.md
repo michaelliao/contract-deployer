@@ -11,3 +11,7 @@ Read the [document](doc.md) and [start deploy](https://deploy.eth.itranswarp.com
 ### Alternative
 
 You can use alternative tools for calculating contract address. Use [Java version](https://github.com/michaelliao/contract-deployer/tree/master/alternative/java) is much faster.
+
+### Reference
+
+[如何在不同链部署地址完全相同的合约](https://www.liaoxuefeng.com/article/1430588932227106)
